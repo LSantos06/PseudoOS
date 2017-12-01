@@ -3,21 +3,21 @@
 #include "processos.h"
 #include "arquivos.h"
 
-class ArqInfoProcessos{
-    std::list<Processo> processos;
+using namespace std;
 
-public:
+class ArqInfoProcessos{
+public:    
+    list<Processo> processos;
     void foo();
         
 };
 
 class ArqOpsSistemasArquivos{
+public:    
     int qtd_blocos_disco;
     int qtd_segmentos_ocupados_disco;
-    std::list<Arquivo> arquivos;
-    std::list<Operacao> operacaos;
-
-public:
+    list<Arquivo> arquivos;
+    list<Operacao> operacaos;
     void foo();
         
 };
