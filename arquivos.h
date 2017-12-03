@@ -41,7 +41,7 @@ typedef struct disco
     ListaArquivo *arquivos;
     ListaOperacao *operacoes;
     ListaOperacao *realizadas;
-    
+
 } Disco;
 
 // Header das funcoes de disco
@@ -62,8 +62,7 @@ void desalocarListaArquivo(ListaArquivo *);
 void imprimirListaArquivo(ListaArquivo *);
 
 // Headers das funcoes de lista/tabela de operacoes
-ListaOperacao* criarListaOperacao(); 
+ListaOperacao* criarListaOperacao();
 ListaOperacao* inserirListaOperacao(ListaOperacao *, int, int, char, int, int);
 void desalocarListaOperacao(ListaOperacao *);
 void imprimirListaOperacao(ListaOperacao *);
-

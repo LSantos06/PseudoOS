@@ -5,10 +5,12 @@ bool ordena (Processo *proc1, Processo *proc2){
   return (proc1->getTempoInicializacao() < proc2->getTempoInicializacao());
 }
 
-Dispatcher::Dispatcher(vector< Processo* > processosArquivo){
+Dispatcher::Dispatcher(vector< Processo* > processosArquivo, Disco *discoArquivo){
   tempo_atual = 0;
-  //Atribui para a lista do Despachante
+  //Atribui para a lista de processos do Dispatcher
   proximosProcessos = processosArquivo;
+  //Atribui para a estrutura de disco do Dispatcher
+  disco = discoArquivo;
 
   //Ordena em ordem crescente de tempo de inicializacao
   sort(proximosProcessos.begin(), proximosProcessos.end(), ordena);
@@ -19,6 +21,8 @@ void Dispatcher::rodaCPU(Processo* processo){
   processo->setTempoProcessador(processo->getTempoProcessador() - 1);
 
   /************** Acoes a serem simuladas na operacao *********/
+  //Operacoes de um processo no sistema de arquivos
+  realizarOperacoes(disco, processo->getID(),processo->getPrioridade());
 
 }
 
@@ -63,4 +67,10 @@ void Dispatcher::executa(){
     } //if processoAtual
     tempo_atual++;
   } //while houver processos
+
+  //Apos fim da execucao, imprimir relatorio de operacoes pros processos
+  relatorioOperacoes(disco);
+  cout << endl << "Mapa de ocupacao do disco:" << endl;
+  //Impressao dos blocos
+  imprimirBlocos(disco);
 }
