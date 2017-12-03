@@ -1,24 +1,18 @@
-#include <iostream>
-#include <list>
-#include "processos.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "arquivos.h"
+#include "processos"
 
-using namespace std;
 
-class ArqInfoProcessos{
-public:    
-    list<Processo> processos;
-    void foo();
-        
-};
-
-class ArqOpsSistemasArquivos{
-public:    
-    int qtd_blocos_disco;
-    int qtd_segmentos_ocupados_disco;
-    list<Arquivo> arquivos;
-    list<Operacao> operacaos;
-    void foo();
-        
-};
-
+// Elemento da lista/tabela de processos
+typedef struct processo
+{
+    int tempoInicializacao;
+    int prioridade;
+    int tempoProcessador;
+    int nBlocosMemoria;
+    int nCodigoImpressora;
+    int requisicaoScanner;
+    int requisicaoModem;
+    int nCodigoDisco;
+} Processo;
