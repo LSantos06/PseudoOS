@@ -72,7 +72,7 @@ bool Recurso::reservaRecurso(Processo *novo_processo_usuario){
             return true;
         }
     }  
-    cout << "Instancia nao pode reservada!" << endl;
+    cout << "Instancia nao pode ser reservada!" << endl;
     return false;
 }
 // libera um recurso 
@@ -91,7 +91,7 @@ bool Recurso::liberaRecurso(Processo *novo_processo_usuario){
             return true;
         }
     }  
-    cout << "Instancia nao pode liberada!" << endl;
+    cout << "Instancia nao pode ser liberada!" << endl;
     return false;
 }
 // imprime as instancias e seus estados
@@ -105,11 +105,11 @@ void Recurso::imprimeInstancias(){
     for(instancia_atual = instancias.begin(); instancia_atual != instancias.end(); ++instancia_atual){
         // instancia nao possui processo
         if(instancia_atual->estadoInstancia()){
-            cout << "Instancia ocupada!" << endl;
+            cout << "Instancia livre!" << endl;
         }
         // instancia possui processo
         else{
-            cout << "Instancia livre!" << endl;
+            cout << "Instancia ocupada!" << endl;
         }
     }  
 }
