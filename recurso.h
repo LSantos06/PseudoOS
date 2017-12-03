@@ -12,6 +12,27 @@ typedef enum tipo{
     SATA
 } Tipo;
 
+class Instancia{
+
+private:
+    // processo que possui a instancia
+    Processo *processo_usuario;
+
+public:
+    // Construtor
+    Instancia();    
+    // Destrutor
+    ~Instancia();
+
+    // Get processo
+    Processo* getProcessoUsuario();
+    void setProcessoUsuario(Processo *novo_processo_usuario);
+
+    // retorna o estado da insatancia
+    bool estadoInstancia();
+};
+
+
 class Recurso{
 
 private:
@@ -20,9 +41,7 @@ private:
     // numero de instancias do recurso
     int numero_instancias;
     // instancias do recurso
-    vector<int> instancias;
-    // processo de usuario que detem o recurso
-    Processo *processo_usuario; 
+    vector<Instancia> instancias;
 
 public:
     // Construtor
@@ -35,19 +54,11 @@ public:
     // Get and Set numero_instancias
     int getNumeroInstancias();
     void setNumeroInstancias(int novo_numero_instancias);
-    // Get and Set instancias
-    vector<int> getInstancias();
-    void setInstancia(int instancia, int novo_valor_instancia);
-    // Get and Set processo
-    Processo* getProcesso();
-    void setProcesso(Processo *novo_processo_usuario);
 
     // reserva um recurso para um processo de usuario
-    bool reservaRecurso(Processo *processo_usuario);
+    bool reservaRecurso(Processo *novo_processo_usuario);
     // libera um recurso 
-    void liberaRecurso();
-    // verifica o estado de um recurso
-    bool estadoRecurso();
+    bool liberaRecurso(Processo *novo_processo_usuario);
     // imprime as instancias e seus estados
     void imprimeInstancias();
     

@@ -58,7 +58,7 @@ public:
     // desaloca a memoria de um processo
     bool desaloca(Processo *processo);
     // imprime o conteudo da memoria
-    void print_memoria();
+    void imprimeMemoria();
 };
 
 #endif

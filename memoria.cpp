@@ -232,7 +232,7 @@ bool Memoria::desaloca(Processo *processo){
     return false;
 }
 // imprime o conteudo da memoria
-void Memoria::print_memoria(){
+void Memoria::imprimeMemoria(){
     cout << "+_+_+_+_+_+ Memoria +_+_+_+_+_+" << endl;
 
     // iterador para o laco
