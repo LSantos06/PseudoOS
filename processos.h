@@ -66,6 +66,9 @@ public:
 
     //Para debug
     void print();
+
+    //Verifica se processo eh usuario
+    bool eh_usuario();
 };
 
 #endif // PROCESS_H

@@ -47,14 +47,6 @@ int FilaGlobal::getTamanho(){
   return num_processos;
 }
 
-bool FilaGlobal::eh_usuario(Processo* processo){
-  //Se for 0, eh de tempo real
-  if(!processo->getPrioridade()){
-    return false;
-  }
-  return true;
-}
-
 bool FilaGlobal::estaoVazias(){
   if(filaTempoReal.empty() && filasUsuario.estaoVazias()){
     return true;
@@ -73,7 +65,7 @@ void FilaGlobal::insere(Processo* processo){
   if(estaCheia()){
     return;
   }
-  if(!eh_usuario(processo)){
+  if(!processo->eh_usuario()){
     filaTempoReal.push(processo);
   }
   else{
@@ -84,7 +76,7 @@ void FilaGlobal::insere(Processo* processo){
 }
 
 void FilaGlobal::realimenta(Processo* processo){
-  if(!eh_usuario(processo)){
+  if(!processo->eh_usuario()){
     filaTempoReal.push(processo);
   }
   else{

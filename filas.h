@@ -40,9 +40,6 @@ class FilaGlobal{
     const int max_processos = 1000;
     int num_processos;
 
-    //Verifica se processo eh usuario
-    bool eh_usuario(Processo* processo);
-
   public:
     queue<Processo*> filaTempoReal;
     FilasUsuario filasUsuario;
