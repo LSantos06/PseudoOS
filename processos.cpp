@@ -165,15 +165,21 @@ void Processo::setMemOffset(int offset){
 }
 
 void Processo::print(){
-  cout << endl << "Infomacoes do processo" << endl;
-  cout << "PID = " << getID() << endl;
-  cout << "inicializacao = " << getTempoInicializacao() << endl;
-  cout << "prioridade = " << getPrioridade() << endl;
-  cout << "tempo de processador = " << getTempoProcessador() << endl;
-  cout << "blocos de memoria = " << getBlocos() << endl;
-  cout << "offset de memoria = " << getMemOffset() << endl;
-  cout << "impressora = " << getImpressora() << endl;
-  cout << "scanner = " << getScanner() << endl;
-  cout << "modem = " << getModem() << endl;
-  cout << "disco = " << getDisco() << endl;
+  cout << "PID: " << getID() << endl;
+  cout << "offset: " << getMemOffset() << endl;
+  cout << "blocks: " << getBlocos() << endl;
+  cout << "priority: " << getPrioridade() << endl;
+  cout << "time: " << getTempoProcessador() << endl;
+  cout << "printers: " << getImpressora() << endl;
+  cout << "scanners: " << getScanner() << endl;
+  cout << "modems: " << getModem() << endl;
+  cout << "drives: " << getDisco() << endl;
+}
+
+bool Processo::eh_usuario(){
+  //Se for 0, eh de tempo real
+  if(!getPrioridade()){
+    return false;
+  }
+  return true;
 }
