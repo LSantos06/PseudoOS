@@ -15,7 +15,7 @@ class Memoria{
 
 private:
     // memoria em si
-    vector<REAL_TIME+USER> memoria;
+    int memoria[REAL_TIME+USER];
 
 public:
     // Construtor
@@ -23,6 +23,8 @@ public:
     // Destrutor
     ~Memoria();
 
+    // verifica se tem memoria contigua para um processo
+    int verifica(int quantidade_blocos, int comeco, int fim);
     // aloca uma quantidade de blocos para a memoria 
     int aloca(int quantidade_blocos, Processo *processo);
     // desaloca uma quantidade de blocos para a memoria

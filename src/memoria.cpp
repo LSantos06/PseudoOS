@@ -13,20 +13,13 @@ Memoria::~Memoria(){
     // desaloca os recursos
 }
 
+// verifica se tem memoria contigua para um processo
+int Memoria::verifica(int quantidade_blocos, int comeco, int fim){
+
+}
 // aloca memoria para um processo
 int Memoria::aloca(int quantidade_blocos, Processo *processo){
 
-    
-    // processo de tempo real
-    if(processo->getPrioridade() == 0){
-        if(quantidade_blocos > (REAL_TIME+USER)){
-
-        }
-    }
-    // processo de usuario
-    else{
-
-    }
 }
 // desaloca a memoria
 void Memoria::desaloca(int offset, int quantidade_blocos){
