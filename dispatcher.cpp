@@ -1,67 +1,66 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
-#include <stdexcept>
-#include "entrada.h"
+#include "dispatcher.h"
 
-using namespace std;
+//Funcao de ordenacao para o vetor de processos
+bool ordena (Processo *proc1, Processo *proc2){
+  return (proc1->getTempoInicializacao() < proc2->getTempoInicializacao());
+}
 
-int main(int argc, char *argv[]){
-    /* Variaveis para manipulacao dos arquivos de entrada */
-    ifstream info_processos;
-    ifstream ops_sistemas_arquivos;
+Dispatcher::Dispatcher(vector< Processo* > processosArquivo){
+  tempo_atual = 0;
+  //Atribui para a lista do Despachante
+  proximosProcessos = processosArquivo;
 
-    /* Classes para o armazenamento dos dados dos arquivos */
-    string linha;
-    string token;    
-    int i;
-    Processo aux_processo;
-    ArqInfoProcessos arq_info_processos;
-    ArqOpsSistemasArquivos arq_ops_sistemas_arquivos;
+  //Ordena em ordem crescente de tempo de inicializacao
+  sort(proximosProcessos.begin(), proximosProcessos.end(), ordena);
+}
 
-    /* Manipulacao do primeiro arquivo de entrada */
-    cout << "Arquivo Info Processos" << endl;
-    // abre o arquivo
-    info_processos.open(argv[1]);
-    // obtem linha a linha se o arquivo estiver aberto
-    if(info_processos.is_open()){
-        while(getline(info_processos,linha)){
-            cout << linha << endl;
-            // separacao dos atributos da linha para um processo
-            istringstream iss(linha);
-            i = 0;
-            while (getline(iss, token, ',')){
-                cout << token << endl;
-                i++;
-            }
-            // insere novo processo na lista de processos do arquivo
-            //arq_info_processos.processos.push_front(aux_processo);
-        }
-        // fecha o arquivo
-        info_processos.close();
-    }  
-    // ERRO: arquivo nao foi aberto    
-    else{
-        throw runtime_error( "Não foi possível abrir o arquivo info processos" );
-    }  
+void Dispatcher::rodaCPU(Processo* processo){
+  //Diminui tempo do processo em 1 quantum (simula execucao)
+  processo->setTempoProcessador(processo->getTempoProcessador() - 1);
 
-    /* Manipulacao do segundo arquivo de entrada */
-    cout << "Arquivo Operacoes" << endl;
-    // abre o arquivo
-    ops_sistemas_arquivos.open(argv[2]);
-    // obtem linha a linha se o arquivo estiver aberto
-    if(ops_sistemas_arquivos.is_open()){
-        while(getline(ops_sistemas_arquivos,linha)){
-            cout << linha << endl;
-        }
-        // fecha o arquivo
-        ops_sistemas_arquivos.close();
-    }  
-    // ERRO: arquivo nao foi aberto
-    else{
-        throw runtime_error( "Não foi possível abrir o arquivo operacoes" );
-    }  
+  /************** Acoes a serem simuladas na operacao *********/
 
-    return 0;
+}
+
+void Dispatcher::executa(){
+  FilaGlobal filaGlobal;
+
+  Processo *processoAtual = nullptr;
+
+  //Enquanto houver processos para executar
+  while(!filaGlobal.estaoVazias() || !proximosProcessos.empty()){
+    //Enquanto o tempo atual for igual ao tempo de inicializacao
+    //dos proximos processos a serem inseridos, insere na fila global
+    while(!proximosProcessos.empty() &&
+    proximosProcessos.front()->getTempoInicializacao() == tempo_atual){
+      cout << "dispatcher =>" << endl;
+      proximosProcessos.front()->print();
+      //Insere elemento na fila
+      filaGlobal.insere(proximosProcessos.front());
+      //Apaga primeiro elemento
+      proximosProcessos.erase(proximosProcessos.begin());
+    }
+
+    //Com elementos devidamente inseridos na fila de prontos,
+    //pode-se escolher 1 da fila global
+    if(!processoAtual && !filaGlobal.estaoVazias()){
+      processoAtual = filaGlobal.escolhe_processo();
+    }
+
+    //Se processo nao for null
+    if(processoAtual){
+      //Manda pra CPU
+      rodaCPU(processoAtual);
+      if(processoAtual->getTempoProcessador() <= 0){
+        //TODO: Operacoes de desalocacao de E/S e memoria
+        processoAtual = nullptr;
+      }
+      //Se n tiver acabado e for processo usuario, sofre preempcao
+      else if(processoAtual->eh_usuario()){
+        filaGlobal.realimenta(processoAtual);
+        processoAtual = nullptr;
+      }
+    } //if processoAtual
+    tempo_atual++;
+  } //while houver processos
 }
