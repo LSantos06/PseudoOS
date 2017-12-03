@@ -1,8 +1,0 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "arquivos.h"
-
-// Header das funcoes entrada (disco)
-Disco* montarDisco(char *);
-void desmontarDisco(Disco *);
-void imprimirDisco(Disco *);
