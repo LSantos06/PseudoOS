@@ -1,7 +1,7 @@
 default: compile
 
 compile:
-	g++ dispatcher.cpp -o dispatcher.out
+	g++ -std=c++11 dispatcher.cpp -o dispatcher.out
 
 clean:
 	rm *.out
