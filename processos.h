@@ -16,10 +16,12 @@ class Processo{
     // 5 requisicao_scanner
     // 6 requisicao_modem
     // 7 numero_disco
+    // 8 ProcessoID
+    // 9 memory_offset
 public:
-    string atributos[8];
+    string atributos[10];
 
-    Processo(string valores_entrada[8]);
+    Processo(string valores_entrada[10]);
 
 //Funcoes para mexer com atributos de processo
     //Retorna, em inteiro, o tempo de inicializacao
@@ -54,6 +56,13 @@ public:
     //Obtencao e modificacao do numer de disco
     int getDisco();
     void setDisco(int disco);
+
+    //ID do processo (apenas acesso)
+    int getID();
+
+    //Obtencao do offset de memoria do processo
+    int getMemOffset();
+    void setMemOffset(int offset);
 
     //Para debug
     void print();

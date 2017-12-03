@@ -10,8 +10,8 @@
 // 6 requisicao_modem
 // 7 numero_disco
 
-Processo::Processo(string valores_entrada[8]){
-  copy(valores_entrada,valores_entrada + 8, atributos);
+Processo::Processo(string valores_entrada[10]){
+  copy(valores_entrada,valores_entrada + 10, atributos);
 }
 
 int Processo::getTempoInicializacao(){
@@ -139,12 +139,39 @@ void Processo::setDisco(int disco){
   atributos[7] = number2string.str();
 }
 
+int Processo::getID(){
+  //Faz uma conversao de um tipo string para int
+  stringstream convert(atributos[8]);
+
+  int retorno;
+
+  return convert >> retorno ? retorno : 0;
+}
+
+int Processo::getMemOffset(){
+  //Faz uma conversao de um tipo string para int
+  stringstream convert(atributos[9]);
+
+  int retorno;
+
+  return convert >> retorno ? retorno : 0;
+}
+
+void Processo::setMemOffset(int offset){
+  stringstream number2string;
+  number2string << offset;
+
+  atributos[9] = number2string.str();
+}
+
 void Processo::print(){
   cout << endl << "Infomacoes do processo" << endl;
+  cout << "PID = " << getID() << endl;
   cout << "inicializacao = " << getTempoInicializacao() << endl;
   cout << "prioridade = " << getPrioridade() << endl;
   cout << "tempo de processador = " << getTempoProcessador() << endl;
-  cout << "memoria = " << getBlocos() << endl;
+  cout << "blocos de memoria = " << getBlocos() << endl;
+  cout << "offset de memoria = " << getMemOffset() << endl;
   cout << "impressora = " << getImpressora() << endl;
   cout << "scanner = " << getScanner() << endl;
   cout << "modem = " << getModem() << endl;
