@@ -1,4 +1,4 @@
-#include "./include/recurso.h"
+#include "../include/recurso.h"
 
 int main(){
     cout << "+_+_+_+_+_+ Testes Instancia +_+_+_+_+_+" << endl;
