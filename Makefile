@@ -12,6 +12,9 @@ run:
 teste_recurso:
 	g++ -std=c++11 ./testes/teste_recurso.cpp ./src/recurso.cpp ./src/processos.cpp -o ./testes/teste_recurso.out && ./testes/teste_recurso.out
 
+teste_memoria:
+	g++ -std=c++11 ./testes/teste_memoria.cpp ./src/memoria.cpp ./src/processos.cpp -o ./testes/teste_memoria.out && ./testes/teste_memoria.out
+
 teste_processo:
 	g++ -std=c++11 ./testes/teste_processo.cpp ./src/processos.cpp -o ./testes/teste_processo.out && ./testes/teste_processo.out
 
