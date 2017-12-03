@@ -129,18 +129,48 @@ bool Memoria::desaloca(Processo *processo){
                 segmento_atual->setProcesso(NULL);
                 // se retirar do comeco
                 if(segmento_atual == tempo_real.begin()){
-                    // ver o proximo
-
+                    // se o proximo elemento nao tiver processo
+                    if(next(segmento_atual)->processo == NULL){
+                        // aumenta a quantidade de blocos disponivel
+                        segmento_atual->setBlocosMemoria(segmento_atual->getBlocosMemoria() + segmento_atual->getProcesso()->getBlocos());
+                        cout << "Processo desalocado!" << endl;
+                        return true;
+                    }
+                    // se o proximo elemento tiver processo, memoria nao sera mais contigua
+                    else{
+                        cout << "Não foi possível desalocar o processo!" << endl;
+                        return false;
+                    }
                 }
                 // se retirar do meio
                 if(segmento_atual != tempo_real.begin() && segmento_atual != tempo_real.end()){
-                    // ver o proximo
-                    
+                    // se o proximo elemento nao tiver processo
+                    if(next(segmento_atual)->processo == NULL){
+                        // aumenta a quantidade de blocos disponivel
+                        segmento_atual->setBlocosMemoria(segmento_atual->getBlocosMemoria() + segmento_atual->getProcesso()->getBlocos());
+                        cout << "Processo desalocado!" << endl;
+                        return true;
+                    }
+                    // se o proximo elemento tiver processo, memoria nao sera mais contigua
+                    else{
+                        cout << "Não foi possível desalocar o processo!" << endl;
+                        return false;
+                    }
                 }
                 // se retirar do fim
                 if(segmento_atual == tempo_real.end()){
-                    // ver o anterior
-
+                    // se o elemento anterior nao tiver processo
+                    if(prev(segmento_atual)->processo == NULL){
+                        // aumenta a quantidade de blocos disponivel
+                        segmento_atual->setBlocosMemoria(segmento_atual->getBlocosMemoria() + segmento_atual->getProcesso()->getBlocos());
+                        cout << "Processo desalocado!" << endl;
+                        return true;
+                    }
+                    // se o elemento anterior tiver processo, memoria nao sera mais contigua
+                    else{
+                        cout << "Não foi possível desalocar o processo!" << endl;
+                        return false;
+                    }
                 }
             }
         }    
@@ -149,6 +179,8 @@ bool Memoria::desaloca(Processo *processo){
     else{
 
     }
+    cout << "Não foi possível desalocar o processo!" << endl;
+    return false;
 }
 // imprime o conteudo da memoria
 void Memoria::print_memoria(){
