@@ -1,9 +1,10 @@
 #ifndef PROCESSOS_H
 #define PROCESSOS_H
 
-#include <string>
+#include <string.h>
 #include <stdbool.h>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -70,5 +71,8 @@ public:
     //Verifica se processo eh usuario
     bool eh_usuario();
 };
+
+// Função de inicialização do vetor de processos
+vector<Processo*> montarVetorProcessos(char *);
 
 #endif // PROCESS_H

@@ -50,14 +50,14 @@ Disco* montarDisco(char *entrada)
     if(fp == NULL)
     {
         printf("Erro ao abrir arquivo '%s'.\n",entrada);
-        return NULL;
+        exit(1);
     }
     Disco *disco = (Disco *)malloc(sizeof(Disco));
     ListaArquivo auxListaArquivo;
     ListaOperacao auxListaOperacao;
     int nRead = 0, auxInt1 = -1, auxInt2 = 0;
-    char buffer[40] = {0};
-    char *pch;
+    char buffer[50] = {0};
+    char *pch = NULL;
 
     // Preparando disco para receber conteúdo
     disco->nBlocos = -1;
