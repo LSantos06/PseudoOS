@@ -22,12 +22,9 @@ void SegmentoContiguo::setBlocosMemoria(int novo_blocos_memoria){
     blocos_memoria = novo_blocos_memoria;
     return;
 }
-// Get and Set blocos_memoria
+// Get offset_memoria
 int SegmentoContiguo::getOffsetMemoria(){
     return offset_memoria;
-}
-void SegmentoContiguo::setOffsetMemoria(int novo_offset_memoria){
-    offset_memoria = novo_offset_memoria;
 }
 // Get and Set processo
 Processo* SegmentoContiguo::getProcesso(){
@@ -42,7 +39,7 @@ void SegmentoContiguo::setProcesso(Processo *novo_processo){
 
 // Construtor
 Memoria::Memoria(){
-    // inserindo os segmentos continuos com offset
+    // aloca os recursos
     tempo_real.push_back(SegmentoContiguo(REAL_TIME,0,NULL));
     usuario.push_back(SegmentoContiguo(USER,REAL_TIME,NULL));
     
