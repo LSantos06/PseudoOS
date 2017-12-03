@@ -18,6 +18,7 @@ class Dispatcher{
     //ainda a serem inicializados (colocados na fila de prontos),
     //de acordo com suas propriedades
     vector< Processo* > proximosProcessos;
+    Disco *disco;
 
     //Determinacao do quantum do SO (1s)
     const int quantum = 1;
@@ -29,7 +30,7 @@ class Dispatcher{
 
   public:
     //Construtor
-    Dispatcher(vector< Processo* > processosArquivo);
+    Dispatcher(vector< Processo* > processosArquivo, Disco *discoArquivo);
 
     //Execucao do SO
     void executa();
