@@ -24,13 +24,14 @@ Processo* FilasUsuario::escolhe_processo(){
     filas[0].pop();
     return retorno;
   }
-  //Se fila 2 tiver vazia
+  //Se fila 2 nao estiver vazia
   if(!filas[1].empty()){
     retorno = filas[1].front();
     filas[1].pop();
     return retorno;
   }
 
+  //Caso contrario, tira-se da fila com menos prioridade
   retorno = filas[2].front();
   filas[2].pop();
   return retorno;
@@ -65,17 +66,19 @@ void FilaGlobal::insere(Processo* processo){
   if(estaCheia()){
     return;
   }
+  num_processos++;
+
   if(!processo->eh_usuario()){
     filaTempoReal.push(processo);
   }
   else{
     filasUsuario.insere(processo);
   }
-  num_processos++;
 
 }
 
 void FilaGlobal::realimenta(Processo* processo){
+  num_processos++;
   if(!processo->eh_usuario()){
     filaTempoReal.push(processo);
   }
