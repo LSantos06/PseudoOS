@@ -1,22 +1,21 @@
 #ifndef MEMORIA_H
 #define MEMORIA_H
 
-#include <list>
+#include <vector>
 #include <iterator>
 #include "processos.h"
 
-#define MEM_SIZE 1024
 #define REAL_TIME 64
 #define USER 960
 
-using namespace std;
+//using namespace std;
 
 class SegmentoContiguo{
 
 private:
     // blocos contiguos
     int blocos_memoria;
-    // offset do inicio da memoria
+    // offset do inicio do segmento contiguo
     int offset_memoria;
     // processo dono do segmento contiguo
     Processo *processo; 
@@ -42,10 +41,10 @@ public:
 class Memoria{
 
 private:
-    // segmentos contiguos de processo de tempo real (MAX 64)
-    list<SegmentoContiguo> tempo_real;
-    // segmentos contiguos de processo de usuario (MAX 960)
-    list<SegmentoContiguo> usuario; 
+    // segmentos contiguos de processo de tempo real 
+    vector<SegmentoContiguo> tempo_real;
+    // segmentos contiguos de processo de usuario
+    vector<SegmentoContiguo> usuario; 
 
 public:
     // Construtor
@@ -54,9 +53,9 @@ public:
     ~Memoria();
 
     // aloca memoria para um processo
-    void aloca(Processo *processo);
+    bool aloca(Processo *processo);
     // desaloca a memoria de um processo
-    void desaloca(Processo *processo);
+    bool desaloca(Processo *processo);
     // imprime o conteudo da memoria
     void print_memoria();
 };
