@@ -1,4 +1,4 @@
-#include "memoria.h"
+#include "../include/memoria.h"
 
 /* SegmentoContiguo */
 

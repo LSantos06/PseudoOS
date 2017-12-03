@@ -1,4 +1,4 @@
-#include "recurso.h"
+#include "../include/recurso.h"
 
 /* Instancia */
 

@@ -4,6 +4,7 @@
 
 using namespace std;
 
+/*
 int main(int argc, char *argv[])
 {
     Disco *disco = montarDisco(argv[1]);
@@ -22,6 +23,7 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+*/
 
 // 
 vector<Processo> lerProcessos(char *entrada)
@@ -31,7 +33,7 @@ vector<Processo> lerProcessos(char *entrada)
     if(fp == NULL)
     {
         printf("Erro ao abrir arquivo '%s'.\n",entrada);
-        return NULL;
+        return vector<Processo>();
     }
     Processo auxProcesso;
     vector<Processo> processos;

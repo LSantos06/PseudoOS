@@ -1,4 +1,4 @@
-#include "arquivos.h"
+#include "../include/arquivos.h"
 
 // Main: realizando cada operacao de um processo separadamente (realizarOperacoes) -> argv[1] = "file.txt"
 /*int main(int argc, char *argv[])

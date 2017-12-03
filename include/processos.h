@@ -1,5 +1,5 @@
-#ifndef PROCESS_H
-#define PROCESS_H
+#ifndef PROCESSOS_H
+#define PROCESSOS_H
 
 #include <string>
 #include <stdbool.h>

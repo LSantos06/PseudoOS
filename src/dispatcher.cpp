@@ -1,4 +1,4 @@
-#include "dispatcher.h"
+#include "../include/dispatcher.h"
 
 //Funcao de ordenacao para o vetor de processos
 bool ordena (Processo *proc1, Processo *proc2){

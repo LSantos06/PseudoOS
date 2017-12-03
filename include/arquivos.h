@@ -1,3 +1,6 @@
+#ifndef ARQUIVOS_H
+#define ARQUIVOS_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -66,3 +69,5 @@ ListaOperacao* criarListaOperacao();
 ListaOperacao* inserirListaOperacao(ListaOperacao *, int, int, char, int, int);
 void desalocarListaOperacao(ListaOperacao *);
 void imprimirListaOperacao(ListaOperacao *);
+
+#endif
