@@ -5,7 +5,6 @@
 #include "filas.h"
 #include "arquivos.h"
 #include "memoria.h"
-#include <vector>
 #include <algorithm>    //Para permitir o sort
 
 using namespace std;
