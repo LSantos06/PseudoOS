@@ -8,3 +8,6 @@ clean:
 
 run:
 	./main.out
+
+teste_processo:
+	g++ -std=c++11 ./testes/teste_processo.cpp ./src/processos.cpp -o ./testes/teste_processo
