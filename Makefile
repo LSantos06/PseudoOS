@@ -10,7 +10,7 @@ run:
 	./pseudoSO.out processes.txt files.txt
 
 teste_arquivos:
-	gcc ./testes/teste_arquivos.c ./src/arquivos.c ./include/arquivos.h -o ./testes/teste_arquivos.out && ./testes/teste_arquivos.out ./files.txt
+	gcc ./testes/teste_arquivos.c ./src/arquivos.c ./include/arquivos.h -o ./testes/teste_arquivos.out && ./testes/teste_arquivos.out files.txt
 
 teste_recurso:
 	g++ -std=c++11 ./testes/teste_recurso.cpp ./src/recurso.cpp ./src/processos.cpp -o ./testes/teste_recurso.out && ./testes/teste_recurso.out
