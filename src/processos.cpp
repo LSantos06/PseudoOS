@@ -201,7 +201,7 @@ vector<Processo*> montarVetorProcessos(char *entrada)
     char *pch = NULL;
 
     // Lendo arquivo de entrada
-    while(!feof(fp))
+    while(buffer[0] != '\0' && !feof(fp))
     {
         // Obtendo linha do arquivo
         do

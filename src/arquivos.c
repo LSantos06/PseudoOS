@@ -41,7 +41,7 @@ Disco* montarDisco(char *entrada)
         buffer[auxInt1] = '\0';
         auxInt1 = -1;
         // Filtrando linhas vazias
-        if(!feof(fp))
+        if(buffer[0] != '\0' && !feof(fp))
         {
             // Obtendo primeira linha - numero de blocos no disco
             if(disco->nBlocos == -1)
