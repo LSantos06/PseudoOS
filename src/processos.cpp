@@ -201,7 +201,7 @@ vector<Processo*> montarVetorProcessos(char *entrada)
     char *pch = NULL;
 
     // Lendo arquivo de entrada
-    while(buffer[0] != '\0' && !feof(fp))
+    while(!feof(fp))
     {
         // Obtendo linha do arquivo
         do
@@ -213,7 +213,7 @@ vector<Processo*> montarVetorProcessos(char *entrada)
         buffer[auxInt1] = '\0';
         auxInt1 = -1;
         // Filtrando linhas vazias
-        if(!feof(fp))
+        if(buffer[0] != '\0' && !feof(fp))
         {
             // Obtendo tempo de inicializacao
             pch = strtok(buffer," ");

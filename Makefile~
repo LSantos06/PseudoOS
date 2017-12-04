@@ -20,3 +20,7 @@ teste_processo:
 
 teste_filas:
 	g++ -std=c++11 ./testes/teste_filas.cpp ./src/processos.cpp ./src/filas.cpp -o ./testes/teste_filas.out && ./testes/teste_filas.out
+	
+teste_memoria:
+	g++ -std=c++11 ./testes/teste_memoria.cpp ./src/memoria.cpp ./include/memoria.h ./src/processos.cpp -o ./testes/teste_memoria.out && ./testes/teste_memoria.out
+
