@@ -55,8 +55,27 @@ string atributos4[10] = {"0", "3", "2", "0", "0",
     cout << "Modem - Esperado: 1 " << "obtido: " << processo1.getModem() << endl;
     cout << "Numero de Disco - Esperado: 5 " << "obtido: " << processo1.getDisco() << endl;
     cout << "PID - Esperado: 0 " << "obtido: " << processo1.getID() << endl;
-    cout << "Memory Offset - Esperado: 0 " << "obtido: " << processo1.getMemOffset() << endl;
+    cout << "Memory Offset - Esperado: 0 " << "obtido: " << processo1.getMemOffset() << endl << endl;
 
+    cout << "******** Teste de insercoes ********" << endl;
+    processo1.setPrioridade(1);
+    processo1.setTempoProcessador(4);
+    processo1.setBlocos(3);
+    processo1.setImpressora(2);
+    processo1.setScanner(true);
+    processo1.setModem(false);
+    processo1.setDisco(10);
+    processo1.setMemOffset(31);
+    cout << "Prioridade - Esperado: 1 " << "obtido: " << processo1.getPrioridade() << endl;
+    cout << "Processador - Esperado: 4 " << "obtido: " << processo1.getTempoProcessador() << endl;
+    cout << "Blocos de memoria - Esperado: 3 " << "obtido: " << processo1.getBlocos() << endl;
+    cout << "Numero impressora - Esperado: 2 " << "obtido: " << processo1.getImpressora() << endl;
+    cout << "Scanner - Esperado: 1 " << "obtido: " << processo1.getScanner() << endl;
+    cout << "Modem - Esperado: 0 " << "obtido: " << processo1.getModem() << endl;
+    cout << "Numero de Disco - Esperado: 10 " << "obtido: " << processo1.getDisco() << endl;
+    cout << "PID - Esperado: 0 " << "obtido: " << processo1.getID() << endl;
+    cout << "Memory Offset - Esperado: 31 " << "obtido: " << processo1.getMemOffset() << endl;
+    cout << "Eh usuario? (Espera-se 1) " << "obtido: " << processo1.eh_usuario() << endl;
 
 
     return 0;
