@@ -20,6 +20,7 @@ void Dispatcher::rodaCPU(Processo* processo){
   //Diminui tempo do processo em 1 quantum (simula execucao)
   processo->setTempoProcessador(processo->getTempoProcessador() - 1);
 
+  cout << "Processo rodando: " << processo->getID() << endl;
   /************** Acoes a serem simuladas na operacao *********/
   //Operacoes de um processo no sistema de arquivos
   realizarOperacoes(disco, processo->getID(),processo->getPrioridade());
@@ -37,7 +38,7 @@ void Dispatcher::executa(){
     //dos proximos processos a serem inseridos, insere na fila global
     while(!proximosProcessos.empty() &&
     proximosProcessos.front()->getTempoInicializacao() == tempo_atual){
-      cout << "dispatcher =>" << endl;
+      cout << endl << "dispatcher =>" << endl;
       proximosProcessos.front()->print();
       //Insere elemento na fila
       filaGlobal.insere(proximosProcessos.front());
